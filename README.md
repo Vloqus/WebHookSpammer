@@ -26,11 +26,11 @@ Simply type the webhook you find, the message to send, and the number of message
    - **Number of Messages**: Specify how many times the message should be sent.  
 
 4. **Click "Send"**  
-   - Sit back and watch as the script does its magic.  
+   - Sit back and watch as the website does its magic.  
 
 ## Demo  
-![Screenshot]([https://via.placeholder.com/600x400?text=Demo+Coming+Soon](https://cdn.discordapp.com/attachments/1306407948351836273/1308238554765197362/DN082Wg.png?ex=673d3799&is=673be619&hm=43484b4f75602b1d4280443a8e9c41cacaab77403365210f828811152d272558&))  
-*Screenshot or GIF of the UI in action.*  
+![Screenshot](https://cdn.discordapp.com/attachments/1306407948351836273/1308238554765197362/DN082Wg.png?ex=673d3799&is=673be619&hm=43484b4f75602b1d4280443a8e9c41cacaab77403365210f828811152d272558&)  
+*Default GUI without anything.*  
 
 ## Requirements  
 - A modern web browser (Google Chrome, Firefox, Edge, etc.)  
