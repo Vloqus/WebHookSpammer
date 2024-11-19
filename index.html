@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Discord Webhook Spam Tester
+        </title>
+        <style>
+            /* Global Styles */ body { font-family: 'Arial', sans-serif; margin: 0;
+            padding: 0; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; background-color: #121212; /* Dark background */ color:
+            #ffffff; overflow: hidden; position: relative; } /* Main container */ .container
+            { width: 100%; max-width: 350px; padding: 20px; background: #1e1e1e; /*
+            Dark grey background */ border-radius: 10px; box-shadow: 0 5px 15px rgba(0,
+            0, 0, 0.2); text-align: center; display: flex; flex-direction: column;
+            justify-content: center; position: relative; z-index: 1; } h1 { font-size:
+            22px; margin-bottom: 15px; color: #dcdcdc; /* Light grey for heading */
+            } input[type="text"], input[type="number"], button { width: 100%; padding:
+            12px; margin: 10px 0; border-radius: 6px; font-size: 16px; box-sizing:
+            border-box; border: 1px solid #555; /* Dark border */ } input[type="text"],
+            input[type="number"] { background-color: #2a2a2a; /* Darker grey for input
+            */ color: #ffffff; border-color: #555; } button { background-color: #444;
+            /* Dark button background */ color: #ffffff; cursor: pointer; border: none;
+            transition: transform 0.2s ease, background-color 0.3s ease; } button:hover
+            { background-color: #666; /* Lighter grey for hover */ } button:active
+            { transform: scale(0.95); /* Button click animation */ } /* Status message
+            styles */ #status { margin-top: 15px; font-size: 14px; color: #b0b0b0;
+            /* Light grey for status text */ } /* Footer watermark */ .watermark {
+            font-size: 12px; color: #555; /* Dark grey watermark */ position: absolute;
+            bottom: 10px; right: 10px; font-style: italic; } /* DVD logo bouncing effect
+            */ #dvdLogo { position: absolute; width: 100px; /* Size of the DVD logo
+            */ height: 50px; /* Height of the DVD logo */ background: url('https://logodix.com/logo/1134705.png')
+            no-repeat center center; background-size: contain; z-index: -1; /* Ensure
+            it stays in the background */ }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1>
+                Webhook Spam Tester
+            </h1>
+            <input type="text" id="webhook" placeholder="Enter Webhook URL">
+            <input type="text" id="message" placeholder="Enter Message">
+            <input type="number" id="messageCount" placeholder="Enter Number of Messages"
+            min="1">
+            <button onclick="sendMessage()">
+                Send Single Message
+            </button>
+            <button onclick="spamMessages()">
+                Spam Messages
+            </button>
+            <p id="status">
+            </p>
+        </div>
+        <div class="watermark">
+            Made by Jan
+        </div>
+        <div id="dvdLogo">
+        </div>
+        <script>
+            // Bouncing DVD Logo Script
+            const dvdLogo = document.getElementById('dvdLogo');
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            let dx = 2;
+            let dy = 2;
+
+            function moveLogo() {
+                x += dx;
+                y += dy;
+
+                if (x + 100 >= window.innerWidth || x <= 0) dx = -dx; // Reverse X direction
+                if (y + 50 >= window.innerHeight || y <= 0) dy = -dy; // Reverse Y direction
+                dvdLogo.style.left = x + 'px';
+                dvdLogo.style.top = y + 'px';
+            }
+
+            setInterval(moveLogo, 10);
+
+            // Webhook Script
+            async
+            function sendMessage() {
+                const webhookUrl = document.getElementById('webhook').value;
+                const message = document.getElementById('message').value;
+                const status = document.getElementById('status');
+
+                if (!webhookUrl.trim()) {
+                    status.textContent = "Webhook URL cannot be empty.";
+                    status.style.color = "red";
+                    return;
+                }
+
+                if (!message.trim()) {
+                    status.textContent = "Message cannot be empty.";
+                    status.style.color = "red";
+                    return;
+                }
+
+                status.textContent = "Sending...";
+                status.style.color = "#ffffff";
+
+                try {
+                    const response = await fetch(webhookUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            content: message
+                        }),
+                    });
+
+                    if (response.ok) {
+                        status.textContent = "Message sent successfully!";
+                        status.style.color = "green";
+                    } else {
+                        throw new Error(`Error: $ {
+                            response.status
+                        }`);
+                    }
+                } catch(error) {
+                    status.textContent = `Failed to send: $ {
+                        error.message
+                    }`;
+                    status.style.color = "red";
+                }
+            }
+
+            async
+            function spamMessages() {
+                const webhookUrl = document.getElementById('webhook').value;
+                const message = document.getElementById('message').value;
+                const messageCount = parseInt(document.getElementById('messageCount').value, 10);
+                const status = document.getElementById('status');
+
+                if (!webhookUrl.trim()) {
+                    status.textContent = "Webhook URL cannot be empty.";
+                    status.style.color = "red";
+                    return;
+                }
+
+                if (!message.trim()) {
+                    status.textContent = "Message cannot be empty.";
+                    status.style.color = "red";
+                    return;
+                }
+
+                if (isNaN(messageCount) || messageCount <= 0) {
+                    status.textContent = "Invalid number of messages.";
+                    status.style.color = "red";
+                    return;
+                }
+
+                status.textContent = `Sending $ {
+                    messageCount
+                }
+                messages...`;
+                status.style.color = "#ffffff";
+
+                let count = 0;
+
+                for (let i = 0; i < messageCount; i++) {
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                content: `$ {
+                                    message
+                                }#$ {
+                                    i + 1
+                                }`
+                            }),
+                        });
+
+                        if (response.ok) {
+                            count++;
+                        }
+                    } catch(error) {
+                        console.error(error.message);
+                    }
+                }
+
+                status.textContent = `Completed: Sent $ {
+                    count
+                }
+                messages.`;
+                status.style.color = "green";
+            }
+        </script>
+    </body>
+
+</html>
