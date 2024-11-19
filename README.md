@@ -20,12 +20,15 @@ Simply type the webhook you find, the message to send, and the number of message
 2. **Run the Application**  
    - Open the `index.html` file in any modern web browser.  
 
-3. **Enter Details**  
+3. OR **Go to the website**
+   - Go to https://vloqus.github.io/WebHookSpammer
+
+5. **Enter Details**  
    - **Webhook URL**: Paste the Discord webhook URL you want to target.  
    - **Message**: Type the custom message to send (e.g., "Stop scamming!").  
    - **Number of Messages**: Specify how many times the message should be sent.  
 
-4. **Click "Send"**  
+6. **Click "Send"**  
    - Sit back and watch as the website does its magic.  
 
 ## Demo  
