@@ -32,7 +32,7 @@ Simply type the webhook you find, the message to send, and the number of message
    - Sit back and watch as the website does its magic.  
 
 ## Demo  
-![Screenshot](https://cdn.discordapp.com/attachments/1306407948351836273/1308238554765197362/DN082Wg.png?ex=673d3799&is=673be619&hm=43484b4f75602b1d4280443a8e9c41cacaab77403365210f828811152d272558&)  
+![Screenshot](https://cdn.discordapp.com/attachments/1262893781510787073/1321234994588422184/ygl9bGw.png?ex=676c7f7a&is=676b2dfa&hm=99b4fdbceecd5f5b93f167e6eb6662548cf01f8890a5eedec75b32e60b33e24e&)  
 *Default GUI without anything.*  
 
 ## Requirements  
